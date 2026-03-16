@@ -1,0 +1,41 @@
+[gd_scene load_steps=5 format=3 uid="uid://4nyhcfqp6x70"]
+
+[ext_resource type="PackedScene" uid="uid://cgffb32s5vw03" path="res://Game/Interface/Deploy/deploy.tscn" id="1_bcjpi"]
+[ext_resource type="PackedScene" uid="uid://cu3lguy8o8enb" path="res://Game/Assets/Scenes/Builder/builder.tscn" id="2_egtdr"]
+[ext_resource type="PackedScene" uid="uid://dg7qfv3dxe60k" path="res://Game/Assets/Scenes/Enemy/enemy.tscn" id="3_ao4g4"]
+
+[sub_resource type="Curve2D" id="Curve2D_0yd3n"]
+_data = {
+"points": PackedVector2Array(0, 0, 0, 0, -64, 608, 0, 0, 0, 0, 256, 608, 0, 0, 0, 0, 256, 256, 0, 0, 0, 0, 512, 256, 0, 0, 0, 0, 512, 512, 0, 0, 0, 0, 768, 512, 0, 0, 0, 0, 800, 416, 0, 0, 0, 0, 896, 416, 0, 0, 0, 0, 960, 512, 0, 0, 0, 0, 1120, 512)
+}
+point_count = 10
+
+[node name="Main" type="Node2D"]
+
+[node name="UI" type="CanvasLayer" parent="."]
+
+[node name="Deploy" parent="UI" instance=ExtResource("1_bcjpi")]
+
+[node name="Builder" parent="." instance=ExtResource("2_egtdr")]
+position = Vector2(64, 640)
+
+[node name="Map" type="Node2D" parent="."]
+
+[node name="Path" type="Path2D" parent="Map"]
+curve = SubResource("Curve2D_0yd3n")
+
+[node name="Enemy" parent="Map/Path" instance=ExtResource("3_ao4g4")]
+position = Vector2(-64, 608)
+loop = true
+
+[node name="Enemy2" parent="Map/Path" instance=ExtResource("3_ao4g4")]
+position = Vector2(81.7375, 608)
+progress = 145.738
+loop = true
+
+[node name="Enemy3" parent="Map/Path" instance=ExtResource("3_ao4g4")]
+position = Vector2(172.78, 608)
+progress = 236.776
+loop = true
+
+[node name="Towers" type="Node2D" parent="Map"]

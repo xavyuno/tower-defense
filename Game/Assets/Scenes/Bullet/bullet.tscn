@@ -1,0 +1,19 @@
+[gd_scene load_steps=3 format=3 uid="uid://bt8u7epy3vmnd"]
+
+[ext_resource type="Script" uid="uid://xe2nneatkckk" path="res://Game/Assets/Scenes/Bullet/bullet.gd" id="1_i3esy"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_0bte0"]
+size = Vector2(64, 20)
+
+[node name="Bullet" type="Area2D"]
+scale = Vector2(0.25, 0.25)
+script = ExtResource("1_i3esy")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_0bte0")
+
+[node name="Polygon2D" type="Polygon2D" parent="."]
+position = Vector2(0, 10)
+polygon = PackedVector2Array(-32, -20, -32, 0, 32, 0, 32, -20)
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]

@@ -1,0 +1,26 @@
+[gd_scene load_steps=3 format=3 uid="uid://dg7qfv3dxe60k"]
+
+[ext_resource type="Script" uid="uid://d82i1in6r821" path="res://Game/Assets/Scenes/Enemy/enemy.gd" id="1_p8ovu"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_2ipie"]
+size = Vector2(32, 32)
+
+[node name="Enemy" type="PathFollow2D"]
+loop = false
+script = ExtResource("1_p8ovu")
+
+[node name="Body" type="CharacterBody2D" parent="." groups=["Enemy"]]
+
+[node name="Collision" type="CollisionShape2D" parent="Body"]
+shape = SubResource("RectangleShape2D_2ipie")
+
+[node name="Polygon2D" type="Polygon2D" parent="."]
+position = Vector2(-16, 16)
+color = Color(0.877061, 0, 0.0305047, 1)
+polygon = PackedVector2Array(0, -32, 0, 0, 32, 0, 32, -32)
+
+[node name="Label" type="Label" parent="."]
+offset_left = -32.0
+offset_top = 16.0
+offset_right = 32.0
+offset_bottom = 39.0

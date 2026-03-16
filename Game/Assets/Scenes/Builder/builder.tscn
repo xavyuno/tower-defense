@@ -1,0 +1,28 @@
+[gd_scene load_steps=3 format=3 uid="uid://cu3lguy8o8enb"]
+
+[ext_resource type="Script" uid="uid://dnvw1yxfu570f" path="res://Game/Assets/Scenes/Builder/builder.gd" id="1_l3fyf"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_yt8ow"]
+size = Vector2(64, 64)
+
+[node name="Builder" type="Area2D"]
+script = ExtResource("1_l3fyf")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_yt8ow")
+
+[node name="Polygon2D" type="Polygon2D" parent="."]
+position = Vector2(-32, 32)
+scale = Vector2(2, 2)
+color = Color(1, 1, 1, 0.392157)
+polygon = PackedVector2Array(0, -32, 0, 0, 32, 0, 32, -32)
+
+[node name="Label" type="Label" parent="."]
+visible = false
+offset_left = -64.0
+offset_top = 32.0
+offset_right = 64.0
+offset_bottom = 128.0
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
+[connection signal="body_exited" from="." to="." method="_on_body_exited"]

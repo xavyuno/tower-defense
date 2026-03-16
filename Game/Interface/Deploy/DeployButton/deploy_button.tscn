@@ -1,0 +1,10 @@
+[gd_scene load_steps=2 format=3 uid="uid://c4two4agflhax"]
+
+[ext_resource type="Script" uid="uid://c05toyfbol2v" path="res://Game/Interface/Deploy/DeployButton/deploy_button.gd" id="1_ho51q"]
+
+[node name="DeployButton" type="Button"]
+custom_minimum_size = Vector2(80, 80)
+script = ExtResource("1_ho51q")
+
+[connection signal="button_down" from="." to="." method="_on_button_down"]
+[connection signal="button_up" from="." to="." method="_on_button_up"]

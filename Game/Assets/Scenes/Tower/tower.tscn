@@ -1,0 +1,46 @@
+[gd_scene load_steps=4 format=3 uid="uid://1ltou2v73665"]
+
+[ext_resource type="Script" uid="uid://i47h1k6kpcbl" path="res://Game/Assets/Scenes/Tower/tower.gd" id="1_rican"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_xlyp3"]
+size = Vector2(64, 64)
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_qwu4q"]
+radius = 96.0
+
+[node name="Tower" type="Button"]
+offset_right = 64.0
+offset_bottom = 64.0
+script = ExtResource("1_rican")
+
+[node name="Body" type="StaticBody2D" parent="." groups=["Tower"]]
+
+[node name="Collision" type="CollisionShape2D" parent="Body"]
+position = Vector2(32, 32)
+shape = SubResource("RectangleShape2D_xlyp3")
+
+[node name="Vision" type="Area2D" parent="."]
+monitorable = false
+
+[node name="Collision" type="CollisionShape2D" parent="Vision"]
+position = Vector2(32, 32)
+shape = SubResource("CircleShape2D_qwu4q")
+
+[node name="Icon" type="Polygon2D" parent="."]
+polygon = PackedVector2Array(0, 0, 0, 64, 64, 64, 64, 0)
+
+[node name="Gun" type="Polygon2D" parent="."]
+position = Vector2(32, 32)
+scale = Vector2(1, 0.40625)
+color = Color(0.999898, 0.325938, 0, 1)
+offset = Vector2(0, -48.2)
+polygon = PackedVector2Array(0, 32, 0, 64, 64, 64, 64, 32)
+
+[node name="Shoot" type="Timer" parent="."]
+autostart = true
+
+[node name="Reload" type="Timer" parent="."]
+
+[connection signal="body_entered" from="Vision" to="." method="_on_vision_body_entered"]
+[connection signal="body_exited" from="Vision" to="." method="_on_vision_body_exited"]
+[connection signal="timeout" from="Shoot" to="." method="_on_shoot_timeout"]
